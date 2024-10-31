@@ -25,7 +25,19 @@ def abrir_xml(request):
 def cadastrar_remessa(request):
     if request.method == 'POST' and request.path == '/cadastrar_remessa/':
         # model = Shipping(nfe, data_emissao, cliente, volumes, peso)
-        pass
+        lista_remessa = request.POST.getlist('remessa')
+        lista_itens = request.POST.getlist('1')
+        lista_itens2 = request.POST.getlist('2')
+        
+        k = list(request.POST.lists())
+        print(len(k))
+        # print(lista_remessa)
+        # print(lista_itens)
+        # print(lista_itens2)
         
 
     return render(request, 'shippings/pages/cadastrar_remessa.html')
+
+def cadastrar_retorno(request):
+    lista = range(10)
+    return render(request, 'shippings/pages/cadastrar_retorno.html', {'lista': lista})

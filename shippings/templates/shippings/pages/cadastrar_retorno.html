@@ -1,0 +1,13 @@
+{% extends "global/base.html" %}
+
+{% block title %}
+<title>Controle de Remessas - Cadastrar Remessa</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+   {% for i in lista %}
+    <p>{{ forloop.counter }}: {{ i }}</p>
+   {% endfor %}
+</div>
+{% endblock content %}

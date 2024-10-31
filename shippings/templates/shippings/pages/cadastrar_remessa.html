@@ -22,23 +22,23 @@
             <div class="form-register">
                 <div class="cliente">
                     <label for="cliente">Cliente</label><br>
-                    <input type="text" id='cliente' name='cliente' size="50" readonly value="{{ cliente }}">
+                    <input type="text" id='cliente' name='remessa' size="50" readonly value="{{ cliente }}">
                 </div>
                 <div class="nfe">
                     <label for="nfe">NFe</label><br>
-                    <input type="number" id='nfe' name='nfe' readonly value={{ nfe }}>
+                    <input type="number" id='nfe' name='remessa' readonly value={{ nfe }}>
                 </div>
                 <div class="emission">
                     <label for="emission">Data de Emissão</label><br>
-                    <input type="text" id='emission' name='emission' readonly value={{ emission }}>
+                    <input type="text" id='emission' name='remessa' readonly value={{ emission }}>
                 </div>
                 <div class="volumes">
                     <label for="volumes">Volumes</label><br>
-                    <input type="number" id='volumes' name='volumes' readonly value={{ volumes }}>
+                    <input type="number" id='volumes' name='remessa' readonly value={{ volumes }}>
                 </div>
                 <div class="peso">
                     <label for="peso">Peso</label><br>
-                    <input type="number" id='peso' name='peso' readonly value={{ peso }}>
+                    <input type="number" id='peso' name='remessa' readonly value={{ peso }}>
                 </div>
             </div>
             <div class="head-products">
@@ -48,12 +48,11 @@
                 <div>quantidade</div>
                 <div>valor unit.(r$)</div>
                 {% for item in itens %}
-                <input type="number" name="codigo" readonly value={{item.0}}>
-                <input type="text" name="descricao" readonly value="{{item.1}}">
-                <input type="text" name="un" readonly value={{item.2}}>
-                <input type="number" name="qtd" readonly value={{item.3}}>
-                <input type="number" name="vunit" readonly value={{item.4}}>
-                <p>{{loop.counter0}}</p>
+                <input type="number" name="{{ forloop.counter }}" readonly value={{item.0}}>
+                <input type="text" name="{{ forloop.counter }}" readonly value="{{item.1}}">
+                <input type="text" name="{{ forloop.counter }}" readonly value={{item.2}}>
+                <input type="number" name="{{ forloop.counter }}" readonly value={{item.3}}>
+                <input type="number" name="{{ forloop.counter }}" readonly value={{item.4}}>
                 {% endfor %}
             </div>
 
