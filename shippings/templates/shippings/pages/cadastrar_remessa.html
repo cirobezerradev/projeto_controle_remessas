@@ -48,11 +48,11 @@
                 <div>quantidade</div>
                 <div>valor unit.(r$)</div>
                 {% for item in itens %}
-                <input type="number" name="{{ forloop.counter }}" readonly value={{item.0}}>
-                <input type="text" name="{{ forloop.counter }}" readonly value="{{item.1}}">
-                <input type="text" name="{{ forloop.counter }}" readonly value={{item.2}}>
-                <input type="number" name="{{ forloop.counter }}" readonly value={{item.3}}>
-                <input type="number" name="{{ forloop.counter }}" readonly value={{item.4}}>
+                <input type="number" name="{{ forloop.counter }}" readonly value={{ item.0 }}>
+                <input type="text" name="{{ forloop.counter }}" readonly value="{{ item.1 }}">
+                <input type="text" name="{{ forloop.counter }}" readonly value={{ item.2 }}>
+                <input type="number" name="{{ forloop.counter }}" readonly value={{ item.3|floatformat:2 }}>
+                <input type="number" name="{{ forloop.counter }}" readonly value={{ item.4|floatformat:2 }}>
                 {% endfor %}
             </div>
 
@@ -60,7 +60,7 @@
             {% if request.get_full_path == abrir_xml %}
             <div class="form-buttons">
                 <div><input type="submit" value="salvar remessa"></div>
-                <div><input type="reset" value="limpar"></div>
+                <div><a href={% url "cadastrar_remessa" %}><input type="button" value="limpar"></a></div>
             </div>
             {% endif %}
         </form>
