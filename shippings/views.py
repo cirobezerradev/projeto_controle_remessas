@@ -9,11 +9,11 @@ from django.contrib import messages
 def index(request):
     return render(request, 'shippings/pages/index.html')
 
-def abrir_xml(request):
+def abrir_xml_remessa(request):
     if request.method == 'POST' and request.path == '/cadastrar_remessa/xml/':
         if not request.FILES == {}:
             try:
-                xml = request.FILES.get('xml')   
+                xml = request.FILES.get('xml')  
                 
                 validator_extension_file(xml)
 
@@ -77,7 +77,13 @@ def cadastrar_remessa(request):
    
     return render(request, 'shippings/pages/cadastrar_remessa.html')
 
-def cadastrar_retorno(request):
+def retornar_remessa(request):
     remessas_db = Shipping.objects.values().filter(status='PENDENTE')
     lista = list(remessas_db)
-    return render(request, 'shippings/pages/cadastrar_retorno.html', {'remessas': lista})
+    return render(request, 'shippings/pages/retornar_remessa.html', {'remessas': lista})
+
+def abrir_xml_retorno(request):
+    pass
+
+def cadastrar_retorno(request, nfe):
+    return render(request, 'shippings/pages/cadastrar_retorno.html', {'nfe_remessa': nfe})

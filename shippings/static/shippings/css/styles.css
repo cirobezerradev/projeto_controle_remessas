@@ -138,26 +138,30 @@ body {
     grid-template-areas: 
         "cliente cliente cliente"
         "nfe emission limit" 
-        "volumes peso peso";
+        "volumes peso nfe_remessa";
 }
 
-.cliente {
+.form-register .cliente {
     grid-area: cliente;
 }
-.nfe {
+.form-register .nfe {
     grid-area: nfe;
 }
-.emission {
+.form-register .emission {
     grid-area: emission;
 }
-.limit {
+.form-register .limit {
     grid-area: limit;
 }
-.volumes {
+.form-register .volumes {
     grid-area: volumes;
 }
-.peso {
+.form-register .peso {
     grid-area: peso;
+}
+
+.form-register .nfe_remessa {
+    grid-area: nfe_remessa;
 }
 
 
@@ -240,7 +244,7 @@ body {
 
 .remessas {
     display: grid;
-    grid-template-columns: 13% 40% 1fr 1fr 1fr;
+    grid-template-columns: 13% 40% 1fr 1fr 5%;
 }
 
 .remessas .head {
@@ -256,9 +260,23 @@ body {
 
 .remessas .for-remessas {
     display: flex;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-family: var(--font-forms);
     text-transform: uppercase;
     border: 1px solid var(--color-logo-opacity);
     justify-content: center;
+    align-content: center;
+    height: 25px;
+}
+
+.button-remessa {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 1.6rem;
+    border: 1px solid var(--color-logo-opacity);
+}
+
+.button-remessa i{
+    color: #126d3b;
 }

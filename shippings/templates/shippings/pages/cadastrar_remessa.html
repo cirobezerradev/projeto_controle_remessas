@@ -8,7 +8,7 @@
 <div class="container">
     {% include "shippings/partial/_messages.html" %}
     <div class="content-open-xml">
-        <form action={% url "abrir_xml" %} method="POST" 
+        <form action={% url "abrir_xml_remessa" %} method="POST" 
         enctype="multipart/form-data">
         {% csrf_token %}
             <div class="form-open-xml">
@@ -61,7 +61,7 @@
                 {% endfor %}
             </div>
 
-            {% url "abrir_xml" as abrir_xml %}
+            {% url "abrir_xml_remessa" as abrir_xml %}
             {% if request.get_full_path == abrir_xml %}
             <div class="form-buttons">
                 <div><input type="submit" value="salvar remessa"></div>
