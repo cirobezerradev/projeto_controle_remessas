@@ -4,6 +4,7 @@ from dom_nfe import DomNFe
 from .models import Shipping, ShippingItem, ShippingStorage
 from .validators import *
 from django.contrib import messages
+from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
@@ -82,8 +83,35 @@ def retornar_remessa(request):
     lista = list(remessas_db)
     return render(request, 'shippings/pages/retornar_remessa.html', {'remessas': lista})
 
-def abrir_xml_retorno(request):
-    pass
-
 def cadastrar_retorno(request, nfe):
     return render(request, 'shippings/pages/cadastrar_retorno.html', {'nfe_remessa': nfe})
+
+def abrir_xml_retorno(request, nfe):
+    if request.method == 'POST' and request.path == f'/cadastrar_retorno/{nfe}/xml':
+        if not request.FILES == {}:
+            try:
+                xml = request.FILES.get('xml')  
+                
+                validator_extension_file(xml)
+
+                dom = DomNFe(xml)
+
+                validator_cfop_retorno(dom.cfop)
+
+                return render(request, 'shippings/pages/cadastrar_retorno.html',
+                            {'cliente': dom.cliente, 
+                            'nfe': dom.num_nfe,
+                            'emission': dom.data_emissao,
+                            'limit' : dom.data_limite,
+                            'volumes': dom.volumes,
+                            'peso': dom.peso,
+                            'itens': dom.itens,
+                            'nfe_remessa': nfe})
+            except ValidationError as e:
+                messages.error(request, e)
+                return render(request, 'shippings/pages/cadastrar_retorno.html', {'nfe_remessa': nfe} )
+            except XMLInvalidError as e:
+                messages.error(request, e)
+                return render(request, 'shippings/pages/cadastrar_retorno.html', {'nfe_remessa': nfe})
+ 
+    return redirect('cadastrar_retorno', nfe)
