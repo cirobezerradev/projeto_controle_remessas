@@ -244,7 +244,7 @@ body {
 
 .remessas {
     display: grid;
-    grid-template-columns: 13% 40% 1fr 1fr 5%;
+    grid-template-columns: 13% 40% 1fr 1fr 0.5fr;
 }
 
 .remessas .head {

@@ -20,6 +20,8 @@ def abrir_xml_remessa(request):
 
                 dom = DomNFe(xml)
 
+                print(dom.cfop)
+
                 validator_cfop_remessa(dom.cfop)
 
                 return render(request, 'shippings/pages/cadastrar_remessa.html',
@@ -75,7 +77,7 @@ def cadastrar_remessa(request):
                 
                 shipping_item.save()
                 shipping_storage.save()      
-   
+
     return render(request, 'shippings/pages/cadastrar_remessa.html')
 
 def retornar_remessa(request):
