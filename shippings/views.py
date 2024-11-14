@@ -9,7 +9,7 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
     return render(request, 'shippings/pages/index.html')
-
+ 
 def abrir_xml_remessa(request):
     if request.method == 'POST' and request.path == '/cadastrar_remessa/xml/':
         if not request.FILES == {}:
